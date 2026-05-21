@@ -1,5 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Screenshots
+
+<div align="center">
+  <img src="images/home.png" alt="Home" width="45%" />
+  <img src="images/search%20fair.png" alt="Search Fair" width="45%" />
+  <img src="images/sing%20in.png" alt="Sign In" width="45%" />
+  <img src="images/create%20account%20with%20role.png" alt="Create Account" width="45%" />
+</div>
+
 ## Getting Started
 
 First, run the development server:
