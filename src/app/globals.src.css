@@ -1,0 +1,345 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================
+   FAIRQUOTE HUB — DESIGN SYSTEM (SHADCN/UI STYLE)
+   ============================================ */
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 39% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 39% 11%;
+    --card-border: 220 13% 91%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 39% 11%;
+    --popover-border: 220 13% 91%;
+    --primary: 217 91% 30%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 91% 30%;
+    --radius: 0.5rem;
+  }
+
+  [data-theme="dark"], .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 217.2 32.6% 17.5%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --popover-border: 217.2 32.6% 17.5%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+/* ============================================
+   RESPONSIVE HELPERS
+   ============================================ */
+
+.container-custom {
+  @apply w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Base animations that might still be useful without the heavy effects */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
+
+/* ============================================================
+   CUSTOM COMPONENT CLASSES
+   ============================================================ */
+
+@layer base {
+/* ---------- CSS Custom Properties (semantic tokens) ---------- */
+:root {
+  --background: 210 20% 98%;
+  --foreground: 220 39% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 39% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 39% 11%;
+  --primary: 217 91% 30%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 214 32% 91%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 217 91% 30%;
+  --radius: 0.5rem;
+
+  /* Accent palette */
+  --amber: #F59E0B;
+  --rose:  #F43F5E;
+  --blue:  #3B82F6;
+  --emerald: #10B981;
+  --indigo: #6366F1;
+
+  /* Tint tokens */
+  --amber-light:   #FEF3C7;
+  --rose-light:    #FFE4E6;
+  --blue-light:    #DBEAFE;
+  --primary-light: #DBEAFE;
+  --primary-dark:  #1E40AF;
+  --amber-dark:    #92400E;
+}
+
+.dark,
+[data-theme="dark"] {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+
+  --rose-light:    rgba(244,63,94,.15);
+  --blue-light:    rgba(59,130,246,.15);
+  --amber-light:   rgba(245,158,11,.15);
+  --primary-light: rgba(59,130,246,.15);
+  --primary-dark:  #93C5FD;
+  --amber-dark:    #FCD34D;
+}
+}
+
+@layer components {
+
+/* ---------- Colour utility classes ---------- */
+.text-rose    { color: var(--rose); }
+.text-amber   { color: var(--amber); }
+.text-blue    { color: var(--blue); }
+.text-emerald { color: var(--emerald); }
+.text-indigo  { color: var(--indigo); }
+.text-primary-dark  { color: var(--primary-dark); }
+.text-primary-hover { color: hsl(var(--primary) / 80%); }
+.text-amber-dark    { color: var(--amber-dark); }
+
+.bg-rose     { background-color: var(--rose); }
+.bg-amber    { background-color: var(--amber); }
+.bg-blue     { background-color: var(--blue); }
+.bg-emerald  { background-color: var(--emerald); }
+.bg-rose-light    { background-color: var(--rose-light); }
+.bg-amber-light   { background-color: var(--amber-light); }
+.bg-blue-light    { background-color: var(--blue-light); }
+.bg-primary-light { background-color: var(--primary-light); }
+
+.border-rose  { border-color: var(--rose); }
+.border-amber { border-color: var(--amber); }
+.fill-amber   { fill: var(--amber); }
+
+/* rose/amber opacity utilities */
+.border-rose\/30 { border-color: rgba(244,63,94,.30); }
+.bg-rose\/5      { background-color: rgba(244,63,94,.05); }
+.bg-rose\/10     { background-color: rgba(244,63,94,.10); }
+
+/* ---------- Container ---------- */
+.container-custom {
+  @apply w-full max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* ---------- Gradients ---------- */
+.gradient-hero {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #1d4ed8 50%, #1e40af 100%);
+}
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #2563eb 100%);
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #2563eb 100%);
+  color: hsl(var(--primary-foreground));
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 14px rgba(37,99,235,.4);
+  transform: translateY(-1px);
+}
+.btn-primary:active  { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background-color: hsl(var(--accent));
+}
+
+/* ---------- Input Field ---------- */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+.input-field::placeholder { color: hsl(var(--muted-foreground)); }
+.input-field:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+}
+
+/* ---------- Card Hover ---------- */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.09);
+}
+
+/* ---------- Extra Animations ---------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+@keyframes fadeInDownFQ {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-down { animation: fadeInDownFQ 0.4s ease-out both; }
+
+@keyframes slideInFromTopFQ {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* shadcn-style animate-in class helpers */
+.animate-in {
+  animation-fill-mode: both;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-out;
+}
+.animate-in.fade-in-80  { animation-name: fadeIn; }
+.animate-in.zoom-in-95  { animation-name: fadeIn; }
+.animate-in.slide-in-from-top-2 { animation-name: slideInFromTopFQ; }
+}
+

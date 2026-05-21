@@ -1,0 +1,157 @@
+/* ============================================================
+   FAIRQUOTE HUB — CUSTOM DESIGN SYSTEM
+   Bypassing Tailwind CLI overwrites
+   ============================================================ */
+
+/* ---------- Colour utility classes ---------- */
+.text-rose    { color: var(--rose); }
+.text-amber   { color: var(--amber); }
+.text-blue    { color: var(--blue); }
+.text-emerald { color: var(--emerald); }
+.text-indigo  { color: var(--indigo); }
+.text-primary-dark  { color: var(--primary-dark); }
+.text-primary-hover { color: hsl(var(--primary) / 80%); }
+.text-amber-dark    { color: var(--amber-dark); }
+
+.bg-rose     { background-color: var(--rose); }
+.bg-amber    { background-color: var(--amber); }
+.bg-blue     { background-color: var(--blue); }
+.bg-emerald  { background-color: var(--emerald); }
+.bg-rose-light    { background-color: var(--rose-light); }
+.bg-amber-light   { background-color: var(--amber-light); }
+.bg-blue-light    { background-color: var(--blue-light); }
+.bg-primary-light { background-color: var(--primary-light); }
+
+.border-rose  { border-color: var(--rose); }
+.border-amber { border-color: var(--amber); }
+.fill-amber   { fill: var(--amber); }
+
+/* rose/amber opacity utilities */
+.border-rose\/30 { border-color: rgba(244,63,94,.30); }
+.bg-rose\/5      { background-color: rgba(244,63,94,.05); }
+.bg-rose\/10     { background-color: rgba(244,63,94,.10); }
+
+/* ---------- Missing Standard Tailwind Mappings ---------- */
+.text-primary { color: hsl(var(--primary)); }
+.bg-primary { background-color: hsl(var(--primary)); }
+.border-primary { border-color: hsl(var(--primary)); }
+
+.text-foreground { color: hsl(var(--foreground)); }
+.bg-background { background-color: hsl(var(--background)); }
+
+.text-muted-foreground { color: hsl(var(--muted-foreground)); }
+.bg-muted { background-color: hsl(var(--muted)); }
+
+.border-border { border-color: hsl(var(--border)); }
+.bg-card { background-color: hsl(var(--card)); }
+.text-card-foreground { color: hsl(var(--card-foreground)); }
+
+.bg-primary\/5 { background-color: hsla(var(--primary), 0.05); }
+.bg-primary\/10 { background-color: hsla(var(--primary), 0.1); }
+
+/* ---------- Gradients ---------- */
+.gradient-hero {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #1d4ed8 50%, #1e40af 100%);
+}
+.gradient-primary {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #2563eb 100%);
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: opacity 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, #2563eb 100%);
+  color: hsl(var(--primary-foreground));
+  border: none;
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 14px rgba(37,99,235,.4);
+  transform: translateY(-1px);
+}
+.btn-primary:active  { transform: translateY(0); }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--border));
+  outline: none;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background-color: hsl(var(--accent));
+}
+
+/* ---------- Input Field ---------- */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid hsl(var(--border));
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-size: 0.875rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+/* Overrides for specific padding when icons are present inside the input container */
+.input-field.pl-10 { padding-left: 2.5rem; }
+.input-field.pl-11 { padding-left: 2.75rem; }
+.input-field.pr-11 { padding-right: 2.75rem; }
+
+.input-field::placeholder { color: hsl(var(--muted-foreground)); }
+.input-field:focus {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+}
+
+/* ---------- Card Hover ---------- */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.09);
+}
+
+/* ---------- Extra Animations ---------- */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+@keyframes fadeInDownFQ {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-down { animation: fadeInDownFQ 0.4s ease-out both; }
+
+@keyframes slideInFromTopFQ {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
